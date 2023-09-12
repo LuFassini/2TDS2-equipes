@@ -38,4 +38,25 @@ Possiveis erros: Falta de conversao, divergencia de nome de instancia, letras mi
 
 - [x] Metodo para listar equipes unicas.
 
+- [x] funçao o para listar todas equipes.
+
+- [x] teste de funçoes.
+
+- [x] criar div no HTML para lista de equipes.
+
+- [x] montagem do HTML percorrendo a lista de equipes pelo metodo forEach.
+
+- [x] criar variavel de montagem do trecho HTML no JS.
+
+- [x] alimentaçao da lista de equipes com a variavel montada.
+
+- [x] funçao para listar equipes unicas.
+
+
+
+
+
+
+
+
 
