@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../11- CRUD/assets/style.css">
     <title>CRUD</title>
 </head>
 <body>
@@ -16,9 +17,12 @@
         <input id="quantidade" type="number">
     </div>
 
-    <button onclick=" criarEquipe()"> Cadastrar </button>
+    <button id="botaoCadastrar" onclick=" criarEquipe()"> Cadastrar </button>
+    <button id="botaoEditar" class="hidden" onclick="editarEquipe()"> Editar </button>
+
 
     <div id="listarEquipes"></div>
+    <div id="listarEquipeUnica"></div>
 
     <script src="../11- CRUD/assets/script.js"></script>
 </body>

@@ -36,7 +36,21 @@ class EquipeService {
     }
     //R=read
     listarEquipesporId(parametro){
-        return this.equipes.filter((equipe) => equipe.id == parametro);
+        return this.equipes.find((equipe) => equipe.id == parametro);
+    }
+
+    //U= update
+    //atualizar = EDITAR
+    atualizarEquipe(id,nome,titulares){
+        const equipe = this.listarEquipesporId(id);
+
+        equipe.nome = nome;
+        equipe.titulares = titulares;
+        equipe.reservas = equipe.calcularReservas();
+        equipe.totalJogadores = equipe.calcularTotaldeJogadores();
+
+        return equipe;
+        
     }
 }
 
@@ -69,7 +83,7 @@ function listarEquipes (){
     
     equipes.forEach((equipe) => {
         content += `
-        <div>
+        <div onclick="listarEquipesporId(${equipe.id})">
         <p>Nome: ${equipe.nome} </p>
         </div>
        `;
@@ -77,4 +91,40 @@ function listarEquipes (){
     
     elementoLista.innerHTML = content;
     //console.log(equipes);
+}
+
+function listarEquipesporId (id){
+    const equipe = equipeService.listarEquipesporId(id);
+
+    const elementoLista = document.getElementById("listarEquipeUnica");
+    
+    elementoLista.innerHTML = "";
+
+    let content = `
+    <div>
+        <p>Id: ${equipe.id}</p>
+        <p>Nome: ${equipe.nome}</p>
+        <p>Total de Jogadores: ${equipe.totalJogadores}</p>
+        <p>Titulares: ${equipe.titulares}</p>
+        <p>Reservas: ${equipe.reservas}</p>
+        <button onclick ="atualizarEquipe(${equipe.id})"> Editar </button>
+    </div>
+    `;
+
+    elementoLista.innerHTML = content;
+    //console.log(equipe);
+}
+
+
+let auxiliar = null;
+
+function atualizarEquipe(id){
+    const equipe = equipeService.listarEquipesporId(id);
+
+    document.getElementById("nomedaequipe").value = equipe.nome;
+    document.getElementById("quantidade").value = equipe.titulares;
+
+    document.getElementById("botaoCadastrar").classList.add("hidden");
+    document.getElementById("botaoEditar").classList.remove("hidden");
+
 }

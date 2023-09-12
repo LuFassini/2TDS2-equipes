@@ -52,6 +52,15 @@ Possiveis erros: Falta de conversao, divergencia de nome de instancia, letras mi
 
 - [x] funçao para listar equipes unicas.
 
+- [x] funçao para listar equipes unicas.
+
+- [x] teste de funçoes.
+
+- [x] criar metodo para atualizar equipe.
+
+- [x] criar funçao para atualizar equipe.
+
+
 
 
 
