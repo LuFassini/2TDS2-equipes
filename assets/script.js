@@ -52,6 +52,13 @@ class EquipeService {
         return equipe;
         
     }
+
+    //D= delete
+    deleteEquipe(parametro){
+        return (this.equipes = this.equipes.filter
+            ((equipe) => equipe.id != parametro
+    ));
+};
 }
 
 const equipeService = new EquipeService();
@@ -65,6 +72,7 @@ function criarEquipe() {
     equipeService.adicionarEquipe(novaEquipe);
     
     listarEquipes();
+    limparInputs();
    
     //console.log(equipeService.equipes);
     //console.log(novaEquipe);
@@ -93,9 +101,11 @@ function listarEquipes (){
     //console.log(equipes);
 }
 
+
+
 function listarEquipesporId (id){
     const equipe = equipeService.listarEquipesporId(id);
-
+    document.getElementById("listarEquipeUnica").classList.remove("hidden");
     const elementoLista = document.getElementById("listarEquipeUnica");
     
     elementoLista.innerHTML = "";
@@ -108,6 +118,7 @@ function listarEquipesporId (id){
         <p>Titulares: ${equipe.titulares}</p>
         <p>Reservas: ${equipe.reservas}</p>
         <button onclick ="atualizarEquipe(${equipe.id})"> Editar </button>
+        <button onclick ="deletarEquipe(${equipe.id})"> Deletar </button>
     </div>
     `;
 
@@ -143,4 +154,17 @@ function editarEquipe (){
     document.getElementById("listarEquipeUnica").classList.add("hidden");
 
     auxiliar = null;
+}
+
+function limparInputs(){
+    document.getElementById("nomedaequipe").value = "";
+    document.getElementById("quantidade").value = "";
+}
+
+function deletarEquipe(id){
+    equipeService.deletarEquipe(id);
+
+    listarEquipes();
+
+document.getElementById("listarEquipeUnica").classList.add("hidden");
 }
