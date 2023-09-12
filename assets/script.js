@@ -127,4 +127,20 @@ function atualizarEquipe(id){
     document.getElementById("botaoCadastrar").classList.add("hidden");
     document.getElementById("botaoEditar").classList.remove("hidden");
 
+    auxiliar = id;
+}
+
+function editarEquipe (){
+    const nome = document.getElementById("nomedaequipe").value;
+    const titulares = Number (document.getElementById("quantidade").value);
+
+    equipeService.atualizarEquipe(auxiliar,nome,titulares);
+
+    listarEquipes();
+
+    document.getElementById("botaoCadastrar").classList.remove("hidden");
+    document.getElementById("botaoEditar").classList.add("hidden");
+    document.getElementById("listarEquipeUnica").classList.add("hidden");
+
+    auxiliar = null;
 }
